@@ -7,7 +7,6 @@ import predict_flair
 from flair.models import SequenceTagger
 from ip2geotools.databases.noncommercial import DbIpCity
 import re
-from pycorenlp import StanfordCoreNLP
 import ipinfo
 from datetime import datetime
 from math import cos, asin, sqrt, pi
@@ -145,26 +144,46 @@ def get_mesure_piezo(station, start_date=None, end_date=None):
 
 
 
-def POS_adj(text):
-    """
-    Returns words that are tagged ADJ in query
-    uses stanfordNLP POS server on port 9000
-    """
-    nlp = StanfordCoreNLP('http://localhost:9000')
-    splitted = text.split()
-    adjs = []
+# def POS_adj(text):
+#     """
+#     Returns words that are tagged ADJ in query
+#     uses stanfordNLP POS server on port 9000
+#     """
+#     nlp = StanfordCoreNLP('http://localhost:9000')
+#     splitted = text.split()
+#     adjs = []
+#
+#     for word in splitted:
+#         result = nlp.annotate(word,
+#                               properties={# def POS_adj(text):
+#     """
+#     Returns words that are tagged ADJ in query
+#     uses stanfordNLP POS server on port 9000
+#     """
+#     nlp = StanfordCoreNLP('http://localhost:9000')
+#     splitted = text.split()
+#     adjs = []
+#
+#     for word in splitted:
+#         result = nlp.annotate(word,
+#                               properties={
+#                                   'annotators': 'pos',
+#                                   'outputFormat': 'json',
+#                                   'timeout': 1000,
+#                               })
+#         if result["sentences"][0]["tokens"][0]["pos"] == "ADJ":
+#             adjs.append(result["sentences"][0]["tokens"][0]["word"])
+#
+#     return adjs
 
-    for word in splitted:
-        result = nlp.annotate(word,
-                              properties={
-                                  'annotators': 'pos',
-                                  'outputFormat': 'json',
-                                  'timeout': 1000,
-                              })
-        if result["sentences"][0]["tokens"][0]["pos"] == "ADJ":
-            adjs.append(result["sentences"][0]["tokens"][0]["word"])
-
-    return adjs
+#                                   'annotators': 'pos',
+#                                   'outputFormat': 'json',
+#                                   'timeout': 1000,
+#                               })
+#         if result["sentences"][0]["tokens"][0]["pos"] == "ADJ":
+#             adjs.append(result["sentences"][0]["tokens"][0]["word"])
+#
+#     return adjs
 
 
 def POS_adj2(text):
