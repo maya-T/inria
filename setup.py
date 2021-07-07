@@ -1,6 +1,6 @@
 import setuptools
 
-requirements = ["requests", "unicodedata", "numpy", "nltk", "flair", "ip2geotools", "ipinfo", "datetime", "stanza"]
+requirements = ["requests", "numpy", "nltk", "flair", "ip2geotools", "ipinfo", "datetime", "stanza"]
 setuptools.setup(
     name="location_time_extractor",
     version=1.0,
